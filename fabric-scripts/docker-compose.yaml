@@ -18,8 +18,8 @@ services:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
     container_name: ca.Herdsman.ml.com
     hostname: ca.Herdsman.ml.com
     networks:
@@ -39,8 +39,8 @@ services:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
     container_name: ca.Slaughter.ml.com
     hostname: ca.Slaughter.ml.com
     networks:
@@ -60,8 +60,8 @@ services:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
     container_name: ca.Retailer.ml.com
     hostname: ca.Retailer.ml.com
     networks:
@@ -98,9 +98,9 @@ services:
     networks:
       - test
     volumes:
-      - ./channel/genesis.block:/var/hyperledger/orderer/genesis.block
-      - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer.ml.com/msp:/var/hyperledger/orderer/msp
-      - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer.ml.com/tls:/var/hyperledger/orderer/tls
+      - ./composer/genesis.block:/var/hyperledger/orderer/genesis.block
+      - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer.ml.com/msp:/var/hyperledger/orderer/msp
+      - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer.ml.com/tls:/var/hyperledger/orderer/tls
 
   # orderer2.ml.com:
   #   container_name: orderer2.ml.com
@@ -133,9 +133,9 @@ services:
   #   networks:
   #     - test
   #   volumes:
-  #     - ./channel/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-  #     - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer2.ml.com/msp:/var/hyperledger/orderer/msp
-  #     - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer2.ml.com/tls:/var/hyperledger/orderer/tls
+  #     - ./composer/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+  #     - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer2.ml.com/msp:/var/hyperledger/orderer/msp
+  #     - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer2.ml.com/tls:/var/hyperledger/orderer/tls
 
   # orderer3.ml.com:
   #   container_name: orderer3.ml.com
@@ -168,9 +168,9 @@ services:
   #   networks:
   #     - test
   #   volumes:
-  #     - ./channel/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-  #     - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer3.ml.com/msp:/var/hyperledger/orderer/msp
-  #     - ./channel/crypto-config/ordererOrganizations/ml.com/orderers/orderer3.ml.com/tls:/var/hyperledger/orderer/tls
+  #     - ./composer/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+  #     - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer3.ml.com/msp:/var/hyperledger/orderer/msp
+  #     - ./composer/crypto-config/ordererOrganizations/ml.com/orderers/orderer3.ml.com/tls:/var/hyperledger/orderer/tls
 
   couchdb0:
     container_name: couchdb0
@@ -255,10 +255,10 @@ services:
     ports:
       - 7051:7051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer0.Herdsman.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer0.Herdsman.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer0.Herdsman.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer0.Herdsman.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
 
@@ -297,10 +297,10 @@ services:
     ports:
       - 8051:8051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer1.Herdsman.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer1.Herdsman.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer1.Herdsman.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Herdsman.ml.com/peers/peer1.Herdsman.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
 
@@ -339,10 +339,10 @@ services:
     ports:
       - 9051:9051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer0.Slaughter.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer0.Slaughter.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer0.Slaughter.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer0.Slaughter.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
 
@@ -381,10 +381,10 @@ services:
     ports:
       - 10051:10051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer1.Slaughter.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer1.Slaughter.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer1.Slaughter.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Slaughter.ml.com/peers/peer1.Slaughter.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
 
@@ -423,10 +423,10 @@ services:
     ports:
       - 11051:11051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer0.Retailer.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer0.Retailer.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer0.Retailer.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer0.Retailer.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
 
@@ -465,9 +465,9 @@ services:
     ports:
       - 12051:12051
     volumes:
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer1.Retailer.ml.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./channel/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer1.Retailer.ml.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer1.Retailer.ml.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./composer/crypto-config/peerOrganizations/Retailer.ml.com/peers/peer1.Retailer.ml.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
-      - ./channel/:/etc/hyperledger/channel/
+      - ./composer/:/etc/hyperledger/channel/
     networks:
       - test
