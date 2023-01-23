@@ -70,3 +70,9 @@ It will createChannel, joinChannel and updateAnchorPeers
 chmod +x createChannel.sh
 ./createChannel.sh
 ```
+
+* Check organisation is in the channel
+```
+docker exec -it peer0.Herdsman.ml.com sh
+peer channel list
+```
