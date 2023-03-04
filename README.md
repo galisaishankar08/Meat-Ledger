@@ -22,6 +22,15 @@ curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/ins
 ./install-fabric.sh --fabric-version 2.2.1 binary
 ```
 
+* Export bin location in .bashrc file
+```
+nano ~/.bashrc
+```
+* Paste below code in bashrc
+```
+export PATH=$PATH:/home/edith/Hyperledger/MeatLedger
+```
+
 * Create fabric scripts folder and move config to composer folder
 ```
 mkdir fabric-scripts
